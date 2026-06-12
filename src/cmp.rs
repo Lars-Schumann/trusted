@@ -1,22 +1,22 @@
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedPartialEq<Rhs = Self>: PartialEq<Rhs> {}
+pub unsafe trait TrustedPartialEq<Rhs = Self>: ::core::cmp::PartialEq<Rhs> {}
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedEq: Eq {}
+pub unsafe trait TrustedEq: ::core::cmp::Eq {}
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedPartialOrd<Rhs = Self>: PartialOrd<Rhs> {}
+pub unsafe trait TrustedPartialOrd<Rhs = Self>: ::core::cmp::PartialOrd<Rhs> {}
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedOrd: Ord {}
+pub unsafe trait TrustedOrd: ::core::cmp::Ord {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
