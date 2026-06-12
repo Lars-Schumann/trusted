@@ -10,5 +10,6 @@ repository = "https://github.com/lars-schumann/trust"
 readme = "README.md"
 description = "Trusted versions of std traits"
 keywords = ["no_std", "unsafe"]
+categories = ["no-std", "no-std::no-alloc"]
 
 [dependencies]
