@@ -1,39 +1,51 @@
-/// # Safety
-///
-/// TODO
-pub unsafe trait TrustedPartialEq<Rhs = Self>: ::core::cmp::PartialEq<Rhs> {}
+use ::core::cmp::Eq;
+use ::core::cmp::Ord;
+use ::core::cmp::PartialEq;
+use ::core::cmp::PartialOrd;
+use ::core::marker::Sized;
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedEq: ::core::cmp::Eq {}
+pub unsafe trait TrustedPartialEq<Rhs: ?Sized = Self>: PartialEq<Rhs> {}
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedPartialOrd<Rhs = Self>: ::core::cmp::PartialOrd<Rhs> {}
+pub unsafe trait TrustedEq: TrustedPartialEq<Self> + Eq {}
 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedOrd: ::core::cmp::Ord {}
+pub unsafe trait TrustedPartialOrd<Rhs: ?Sized = Self>: TrustedPartialEq<Rhs> + PartialOrd<Rhs> {}
+
+/// # Safety
+///
+/// TODO
+pub unsafe trait TrustedOrd: TrustedPartialOrd<Self> + Ord {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl TrustedPartialEq for [
-        ::core::primitive::u8,
-        ::core::primitive::u16,
-        ::core::primitive::u32,
-        ::core::primitive::u64,
-        ::core::primitive::u128,
-        ::core::primitive::usize,
 
+        (),
+        ::core::primitive::bool,
+        ::core::primitive::char,
+        ::core::primitive::f32,
+        ::core::primitive::f64,
         ::core::primitive::i8,
         ::core::primitive::i16,
         ::core::primitive::i32,
         ::core::primitive::i64,
         ::core::primitive::i128,
         ::core::primitive::isize,
+        ::core::primitive::str,
+        ::core::primitive::u8,
+        ::core::primitive::u16,
+        ::core::primitive::u32,
+        ::core::primitive::u64,
+        ::core::primitive::u128,
+        ::core::primitive::usize,
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -48,28 +60,31 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroI64,
         ::core::num::NonZeroI128,
         ::core::num::NonZeroIsize,
-
-        ::core::primitive::f32,
-        ::core::primitive::f64,
     ]
 }
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl TrustedEq for [
-        ::core::primitive::u8,
-        ::core::primitive::u16,
-        ::core::primitive::u32,
-        ::core::primitive::u64,
-        ::core::primitive::u128,
-        ::core::primitive::usize,
 
+        (),
+        ::core::primitive::bool,
+        ::core::primitive::char,
+        // ::core::primitive::f32,
+        // ::core::primitive::f64,
         ::core::primitive::i8,
         ::core::primitive::i16,
         ::core::primitive::i32,
         ::core::primitive::i64,
         ::core::primitive::i128,
         ::core::primitive::isize,
+        ::core::primitive::str,
+        ::core::primitive::u8,
+        ::core::primitive::u16,
+        ::core::primitive::u32,
+        ::core::primitive::u64,
+        ::core::primitive::u128,
+        ::core::primitive::usize,
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -91,19 +106,25 @@ crate::macros::unsafe_impl_trait_for_types! {
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl TrustedPartialOrd for [
-        ::core::primitive::u8,
-        ::core::primitive::u16,
-        ::core::primitive::u32,
-        ::core::primitive::u64,
-        ::core::primitive::u128,
-        ::core::primitive::usize,
 
+        (),
+        ::core::primitive::bool,
+        ::core::primitive::char,
+        ::core::primitive::f32,
+        ::core::primitive::f64,
         ::core::primitive::i8,
         ::core::primitive::i16,
         ::core::primitive::i32,
         ::core::primitive::i64,
         ::core::primitive::i128,
         ::core::primitive::isize,
+        ::core::primitive::str,
+        ::core::primitive::u8,
+        ::core::primitive::u16,
+        ::core::primitive::u32,
+        ::core::primitive::u64,
+        ::core::primitive::u128,
+        ::core::primitive::usize,
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -119,27 +140,31 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroI128,
         ::core::num::NonZeroIsize,
 
-        ::core::primitive::f32,
-        ::core::primitive::f64,
     ]
 }
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl TrustedOrd for [
-        ::core::primitive::u8,
-        ::core::primitive::u16,
-        ::core::primitive::u32,
-        ::core::primitive::u64,
-        ::core::primitive::u128,
-        ::core::primitive::usize,
 
+        (),
+        ::core::primitive::bool,
+        ::core::primitive::char,
+        // ::core::primitive::f32,
+        // ::core::primitive::f64,
         ::core::primitive::i8,
         ::core::primitive::i16,
         ::core::primitive::i32,
         ::core::primitive::i64,
         ::core::primitive::i128,
         ::core::primitive::isize,
+        ::core::primitive::str,
+        ::core::primitive::u8,
+        ::core::primitive::u16,
+        ::core::primitive::u32,
+        ::core::primitive::u64,
+        ::core::primitive::u128,
+        ::core::primitive::usize,
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -154,5 +179,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroI64,
         ::core::num::NonZeroI128,
         ::core::num::NonZeroIsize,
+
     ]
 }
