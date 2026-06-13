@@ -13,3 +13,6 @@ keywords = ["no_std", "unsafe"]
 categories = ["no-std", "no-std::no-alloc"]
 
 [dependencies]
+
+[features]
+alloc = []
