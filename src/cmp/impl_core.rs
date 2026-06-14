@@ -58,6 +58,7 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
+        {T: crate::cmp::TrustedEq, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -96,6 +97,7 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
+        {T: crate::cmp::TrustedPartialOrd, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -134,6 +136,7 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
+        {T: crate::cmp::TrustedOrd, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
