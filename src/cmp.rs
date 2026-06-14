@@ -50,7 +50,7 @@ pub unsafe trait TrustedPartialOrd<Rhs: ?Sized = Self>: TrustedPartialEq<Rhs> + 
 /// # Safety
 ///
 /// TODO
-pub unsafe trait TrustedOrd: TrustedPartialOrd<Self> + Ord {}
+pub unsafe trait TrustedOrd: TrustedEq + TrustedPartialOrd<Self> + Ord {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
