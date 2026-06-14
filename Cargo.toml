@@ -16,3 +16,4 @@ categories = ["no-std", "no-std::no-alloc"]
 
 [features]
 alloc = []
+std = ["alloc"]
