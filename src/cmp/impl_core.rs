@@ -31,7 +31,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroU64,
         ::core::num::NonZeroU128,
         ::core::num::NonZeroUsize,
-
         ::core::num::NonZeroI8,
         ::core::num::NonZeroI16,
         ::core::num::NonZeroI32,
@@ -84,7 +83,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroU64,
         ::core::num::NonZeroU128,
         ::core::num::NonZeroUsize,
-
         ::core::num::NonZeroI8,
         ::core::num::NonZeroI16,
         ::core::num::NonZeroI32,
@@ -137,7 +135,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroU64,
         ::core::num::NonZeroU128,
         ::core::num::NonZeroUsize,
-
         ::core::num::NonZeroI8,
         ::core::num::NonZeroI16,
         ::core::num::NonZeroI32,
@@ -190,7 +187,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroU64,
         ::core::num::NonZeroU128,
         ::core::num::NonZeroUsize,
-
         ::core::num::NonZeroI8,
         ::core::num::NonZeroI16,
         ::core::num::NonZeroI32,
