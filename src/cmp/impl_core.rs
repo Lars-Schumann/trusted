@@ -1,3 +1,8 @@
+use crate::cmp::TrustedEq;
+use crate::cmp::TrustedOrd;
+use crate::cmp::TrustedPartialEq;
+use crate::cmp::TrustedPartialOrd;
+
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl crate::cmp::TrustedPartialEq [for] [
@@ -19,7 +24,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
-        {T: crate::cmp::TrustedPartialEq, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -37,9 +41,24 @@ crate::macros::unsafe_impl_trait_for_types! {
     ]
 }
 
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T,) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T, T, T, T, T) {}
+
+unsafe impl<T: TrustedPartialEq, const N: usize> TrustedPartialEq for [T; N] {}
+
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
-    unsafe impl crate::cmp::TrustedEq [for] [
+    unsafe impl TrustedEq [for] [
         (),
         ::core::primitive::bool,
         ::core::primitive::char,
@@ -58,7 +77,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
-        {T: crate::cmp::TrustedEq, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -75,6 +93,21 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroIsize,
     ]
 }
+
+unsafe impl<T: TrustedEq> TrustedEq for (T,) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedEq> TrustedEq for (T, T, T, T, T, T, T, T, T, T, T, T) {}
+
+unsafe impl<T: TrustedEq, const N: usize> TrustedEq for [T; N] {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
@@ -97,7 +130,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
-        {T: crate::cmp::TrustedPartialOrd, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -114,6 +146,21 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroIsize,
     ]
 }
+
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T,) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T, T, T, T, T) {}
+
+unsafe impl<T: TrustedPartialOrd, const N: usize> TrustedPartialOrd for [T; N] {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
@@ -136,7 +183,6 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::primitive::u64,
         ::core::primitive::u128,
         ::core::primitive::usize,
-        {T: crate::cmp::TrustedOrd, const N: usize} [T; N],
 
         ::core::num::NonZeroU8,
         ::core::num::NonZeroU16,
@@ -153,3 +199,18 @@ crate::macros::unsafe_impl_trait_for_types! {
         ::core::num::NonZeroIsize,
     ]
 }
+
+unsafe impl<T: TrustedOrd> TrustedOrd for (T,) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T, T, T, T, T) {}
+unsafe impl<T: TrustedOrd> TrustedOrd for (T, T, T, T, T, T, T, T, T, T, T, T) {}
+
+unsafe impl<T: TrustedOrd, const N: usize> TrustedOrd for [T; N] {}

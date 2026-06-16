@@ -1,7 +1,11 @@
-crate::macros::unsafe_impl_trait_for_types! {
-    unsafe impl crate::cmp::TrustedPartialEq [for] [
-        {T: crate::cmp::TrustedPartialEq} ::alloc::collections::vec_deque::VecDeque<T>,
+use crate::cmp::TrustedEq;
+use crate::cmp::TrustedPartialEq;
 
-        {T: crate::cmp::TrustedPartialEq} ::alloc::vec::Vec<T>,
-    ]
-}
+use ::alloc::collections::VecDeque;
+use ::alloc::vec::Vec;
+
+unsafe impl<T1: TrustedPartialEq<T2>, T2> TrustedPartialEq<Vec<T2>> for Vec<T1> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for VecDeque<T> {} // we cannot do what Vec does, since VecDQ is missing the corresponding PartialEq impl
+
+unsafe impl<T: TrustedEq> TrustedEq for Vec<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for VecDeque<T> {}
