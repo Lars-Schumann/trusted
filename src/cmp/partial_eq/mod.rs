@@ -38,3 +38,6 @@ mod impl_alloc;
 /// Violating these requirements is a safety error.
 /// This means that `unsafe` code may rely on the correctness of these methods.
 pub unsafe trait TrustedPartialEq<Rhs: ?Sized = Self>: PartialEq<Rhs> {}
+
+// Note: We violate the requirement to not implement this trait for foreign types by doing so for std's types,
+// but since no one except this crate could write those impls, we have no choice but to do this.
