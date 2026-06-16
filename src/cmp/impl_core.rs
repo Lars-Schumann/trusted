@@ -55,6 +55,17 @@ unsafe impl<T: TrustedPartialEq> TrustedPartialEq for (T, T, T, T, T, T, T, T, T
 
 unsafe impl<T: TrustedPartialEq, const N: usize> TrustedPartialEq for [T; N] {}
 
+// TODO: make these refer to ::core::range::legacy once that is stable
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::ops::Range<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::ops::RangeFrom<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::ops::RangeInclusive<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::ops::RangeToInclusive<T> {}
+
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::range::Range<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::range::RangeFrom<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::range::RangeInclusive<T> {}
+unsafe impl<T: TrustedPartialEq> TrustedPartialEq for ::core::range::RangeToInclusive<T> {}
+
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
     unsafe impl TrustedEq [for] [
@@ -158,6 +169,17 @@ unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T,
 unsafe impl<T: TrustedPartialOrd> TrustedPartialOrd for (T, T, T, T, T, T, T, T, T, T, T, T) {}
 
 unsafe impl<T: TrustedPartialOrd, const N: usize> TrustedPartialOrd for [T; N] {}
+
+// TODO: make these refer to ::core::range::legacy once that is stable
+unsafe impl<T: TrustedEq> TrustedEq for ::core::ops::Range<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::ops::RangeFrom<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::ops::RangeInclusive<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::ops::RangeToInclusive<T> {}
+
+unsafe impl<T: TrustedEq> TrustedEq for ::core::range::Range<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::range::RangeFrom<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::range::RangeInclusive<T> {}
+unsafe impl<T: TrustedEq> TrustedEq for ::core::range::RangeToInclusive<T> {}
 
 // SAFETY: we trust std
 crate::macros::unsafe_impl_trait_for_types! {
