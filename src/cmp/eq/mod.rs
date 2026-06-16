@@ -1,5 +1,6 @@
-use crate::cmp::TrustedPartialEq;
 use ::core::cmp::Eq;
+
+use crate::cmp::TrustedPartialEq;
 
 mod impl_core;
 
